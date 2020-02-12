@@ -14,7 +14,7 @@ const SingleCountry = ({country,darkmode}) => {
         let str = '';
         if(array.length > 0) {
            return array.map(item => {
-                return str = `${str ? str + ', ' : ''}${item.name}`
+                return str = `${str ? ', ' : ''}${item.name}`
              })
         }
     
