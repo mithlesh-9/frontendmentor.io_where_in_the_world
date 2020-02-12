@@ -8,6 +8,7 @@ let searchInput;
     <div onClick={()=>searchInput.focus()} className={`search-box ${darkmode ? 'darkmode' : 'normalmode'}`}>
         <span className="lnr lnr-magnifier"></span>
         <input 
+            title="search"
             {...rest}
             className="search-field"
             type="search"
