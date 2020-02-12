@@ -13,13 +13,12 @@ class Country extends PureComponent {
         const {fetchCountry,match:{params:{name}},country} = this.props
         if(name) {
             country 
-            ? country.alpha3Code === name ? this.emptyFunction() : fetchCountry(name)
+            ? country.alpha3Code !== name && fetchCountry(name)
             : fetchCountry(name)
             
         } 
     }
 
-    emptyFunction = () => {return};
 
     componentDidUpdate(prevProps) {
         const {fetchCountry,match:{params:{name}}} = this.props
@@ -36,10 +35,15 @@ class Country extends PureComponent {
                 <LoadingOrErrors isLoading={isLoading} errors={errors} darkmode={darkmode} />
             )
         }
+        
         return ( 
                     <div className={`main ${darkmode ? 'darkmode' : 'normalmode'}`}>
                     <Link to={{pathname:'/'}} className={`btn ${darkmode ? 'darkmode' : 'normalmode'}`}><span className="lnr lnr-arrow-left"></span>Back</Link>
-                    <SingleCountry key={country.alpha3Code} country={country} darkmode={darkmode}/>                  
+                    {
+                        country && (
+                            <SingleCountry darkmode={darkmode} country={country} />
+                        )
+                    }
                     </div>
                 )
         

@@ -3,7 +3,7 @@ import countryActionTypes from './country.action.types';
 
 const INITIAL_STATE = {
     isLoading: false,
-    country: [],
+    country: null,
     errors: null
 }
 
@@ -12,7 +12,7 @@ const countryReducer = (state = INITIAL_STATE,action) => {
         case countryActionTypes.fetch_country_start:
            return {...state,
             isLoading:true,
-            country: [],
+            country:null,
             errors: null}
            
         case countryActionTypes.fetch_country_success:
@@ -26,7 +26,7 @@ const countryReducer = (state = INITIAL_STATE,action) => {
             return {
                 ...state,
                 isLoading:false,
-                country:[],
+                country:null,
                 errors:action.payload
             }           
     

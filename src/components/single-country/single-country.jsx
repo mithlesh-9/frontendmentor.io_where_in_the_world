@@ -3,22 +3,29 @@ import './single-country.scss';
 import  {Link} from 'react-router-dom';
 import Numeral from 'numeral';
 
-const extractData = array => {
-    let str = ''
- array.map(item => {
-    return str = `${str ? str + ', ' : ''}${item.name}`
- })
- return str;
-}
 
 
-const borderCountries = (borders,darkmode) => {
-    return borders.map(border => (
-        <Link key={border} to={{pathname:`/country/${border}`}} className={`country-link ${darkmode ? 'darkmode' : 'normalmode'}`}>{border}</Link>    ))
-}
+
+
 
 const SingleCountry = ({country,darkmode}) => {
     const { flag, name, population, region, subregion, capital,topLevelDomain,borders, currencies, languages, nativeName} = country
+    const extractData = array => {
+        let str = '';
+        if(array.length > 0) {
+           return array.map(item => {
+                return str = `${str ? str + ', ' : ''}${item.name}`
+             })
+        }
+    
+     return str;
+    }
+
+    const borderCountries = (borders,darkmode) => {
+        return borders.map(border => (
+            <Link key={border} to={{pathname:`/country/${border}`}} className={`country-link ${darkmode ? 'darkmode' : 'normalmode'}`}>{border}</Link>    ))
+    }
+    
     return (
     <div className="country-page">
                 <div className="flag">
@@ -39,7 +46,7 @@ const SingleCountry = ({country,darkmode}) => {
                     </div>
     
                     <div className="additional-info">
-                    <div className="field">Top Level Domain:<span className="data">{topLevelDomain.toString()}</span></div>
+                    <div className="field">Top Level Domain:<span className="data">{topLevelDomain}</span></div>
                     <div className="field">Currencies:<span className="data">{extractData(currencies)}</span></div>
                     <div className="field">Language:<span className="data">{extractData(languages)}</span></div>
                     </div>

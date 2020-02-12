@@ -20,7 +20,8 @@ header.darkmode {
          display: flex;
          justify-content: space-between;
          .heading {
-             font-weight: 800;
+             font-weight:900;
+             font-size: 1.1em;
          }
          .switch {
              button {
@@ -29,7 +30,7 @@ header.darkmode {
                  border: none;
                  cursor: pointer;
                  color: inherit;
-                 font-weight: 600;
+                 font-weight: 400;
                  font-size: 14px;
                  font-family: inherit;
                  span {
