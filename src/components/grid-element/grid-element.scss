@@ -1,0 +1,38 @@
+@import '../../partials';
+@import '../../coutryPartials';
+
+
+.grid-item.darkmode {
+    @include darkmodeElements()      
+ }
+
+ .grid-item.normalmode {
+     @include normalmodeElements()
+ }
+
+ .grid-item {
+     border-radius: 7px; 
+     overflow: hidden;
+     max-height: calc( 179.5px * 2 );
+
+     .flag {
+         width: 100%;
+            max-height: 179.5px;
+     }
+
+     .infos {
+         padding: 2em 1.5em;
+
+         .country-name {
+             @include countryName(18px)
+         }
+
+         .field {
+             .data {
+                 @include data()
+             }
+             @include field(13px)
+         }
+     }
+
+ }

@@ -1,0 +1,35 @@
+@import '../../partials';
+
+.search-box.darkmode {
+    @include darkmodeElements()
+}
+.search-box.normalmode {
+    @include normalmodeElements()
+}
+
+.search-box {
+    padding: 15px 0;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    border:none;
+    span {
+        padding: 0 1.2em;
+        height: 100%;
+        font-weight: 800;
+        color:inherit;
+
+    }
+    input {
+        outline: none;
+        border: none;
+        width: 300px;
+        padding: 0 10px 0 0;
+        background: transparent;
+        font-size: 1.1em;
+        color: inherit;
+        
+    }
+    
+}

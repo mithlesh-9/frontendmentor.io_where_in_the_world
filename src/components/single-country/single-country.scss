@@ -1,0 +1,136 @@
+@import '../../coutryPartials';
+@import '../../partials';
+
+.country-page {
+    margin-top:4.5em;
+    display: flex;
+    flex-wrap: wrap;
+    
+    .flag {
+        max-height: 400px;
+        max-width:560px;
+
+        img {
+            max-width:100%;
+            max-height: 100%;
+        }
+    }
+    
+}
+
+.details {
+    width: calc(100% - 560px);
+    padding: 1em 0 0 5.5em;
+    .name {
+        @include countryName(25px)
+    }
+    .other-info {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .main-info {
+            margin:0 1em 1.5em 0; 
+        }
+        
+    }
+}
+
+
+
+.field {
+    .data {
+        margin-left: 5px;
+        @include data()
+    }
+    @include field(13px)
+}
+
+.border-info {
+    display:flex;
+    margin-top:1.5em;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .field {
+        margin:0 15px 15px 0;
+    }
+
+    .countries {
+        display:flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+}
+
+
+
+.country-link.darkmode {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.671);
+    @include darkmodeElements()
+}
+.country-link.normalmode {
+    box-shadow: 0 0 10px rgba(153, 153, 153, 0.747);
+    @include normalmodeElements()
+}
+
+.country-link {
+    width:100px;
+    padding:.3em 0;
+    border: none;
+    font-size: 13px;
+
+    text-align: center;
+    border-radius:3px;
+    margin:0 10px 10px 0 ;
+}
+
+
+@media only screen and (max-width: 900px) {
+    .country-page {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+        .flag {
+            max-height: 400px;
+            max-width:560px;
+    
+            img {
+                max-width:100%;
+                max-height: 100%;
+            }
+        }
+
+        .details {
+            width: 560px;
+            padding: 2em 0 0 0;
+        }
+        
+    } 
+}
+
+
+@media only screen and (max-width: 760px) {
+    .country-page {
+        flex-direction: column;
+
+        
+        .flag {
+            max-height: 400px;
+            width:100%;
+    
+            img {
+                max-width:100%;
+                max-height: 100%;
+            }
+        }
+
+        .details {
+            width: 100%;
+            padding: 2em 0 0 0;
+        }
+        
+    } 
+}
+

@@ -1,0 +1,53 @@
+@import '../../partials';
+.select.darkmode {
+    @include darkmodeElements()
+}
+.select.normalmode {
+    @include normalmodeElements()
+}
+.clickable {
+    cursor: pointer;
+}
+
+.select {
+    border: none;
+    border-radius: 7px; 
+    font-size: 13px;
+    position: relative;
+    transition: all .5s;
+    .label {
+        height: 100%;
+        padding: 1em 1em;
+
+        span {
+            margin-left: 30px;
+        }
+    }
+    
+
+    .options {
+        z-index: 99999;
+        position: absolute;
+        width:100%;
+        padding:7px 0;
+        left:0;
+        top: 50px;
+        background: inherit;
+        border-radius: 7px; 
+        border: inherit;  
+        box-shadow: 0 0 10px #0000006e;
+        
+
+        .option {
+            cursor: pointer;
+            text-align: left;
+            background: none;
+            padding: 1em 2em;
+            display: block;
+
+            &:hover {
+                background: rgba(189, 187, 187, 0.603);
+            }
+        }
+    }
+} 

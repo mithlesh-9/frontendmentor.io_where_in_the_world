@@ -1,0 +1,37 @@
+
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span.darkmode {
+        color: #fff;
+    }
+    span.normalmode {
+        color: #929292fa;
+    }
+    span {
+        font-size: 1.2em;
+        text-align: center;
+        font-weight: 600;
+    }
+    .circle {
+        padding: 15px;
+        border: 6px solid #ccc;
+        border-radius: 50%;
+        border-right-color: #888;
+        animation: rotate 1s infinite;
+
+        
+    }
+    
+    
+}
+
+
+@keyframes rotate {
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

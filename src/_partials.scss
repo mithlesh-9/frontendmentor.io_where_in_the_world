@@ -1,0 +1,30 @@
+$bgDark: hsl(209, 23%, 22%);
+$bgLight: #fff;
+$textDark: #111;
+$textLight: #fff;
+$transist: all 1s;
+
+
+@mixin darkmodeElements {
+    background: $bgDark;
+    color:$textLight;
+    border: none; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.671);
+    transition: $transist;  
+}
+
+@mixin normalmodeElements {
+    background: $bgLight;
+    color:$bgDark;
+    box-shadow: 0 0 8px rgba(153, 153, 153, 0.747);
+    transition: $transist;      
+}
+
+@mixin main {
+    transform: translateY(61px);
+    min-height: calc( 100vh - 61px );
+    position: relative;
+    display: block;
+    padding: 1.2em 5%;
+    transition: $transist;  
+}

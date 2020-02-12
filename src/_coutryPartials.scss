@@ -1,0 +1,16 @@
+@mixin countryName($fontSize) {
+        font-weight:800;
+        font-size: $fontSize;
+        margin-bottom: 1em;
+}
+
+
+@mixin field($fontSize) {
+    margin: .5em 0;
+    font-size: $fontSize;
+    font-weight: 600; 
+}
+@mixin data {
+    margin-left: 5px;
+    font-weight: 300;   
+}

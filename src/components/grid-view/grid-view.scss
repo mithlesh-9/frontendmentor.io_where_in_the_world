@@ -1,0 +1,7 @@
+.grid-view {
+    margin-top: 3em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(100px,262px));
+    grid-gap:3.4em;
+    justify-content: space-evenly;
+}

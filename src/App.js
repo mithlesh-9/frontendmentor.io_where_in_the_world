@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component} from 'react';
+import { Switch, Route } from 'react-router-dom';
+import './App.scss';
+import { connect } from 'react-redux';
 
-function App() {
-  return (
+//pages
+import Home from './pages/home/home';
+import Country from './pages/country-page/country.jsx';
+
+//components
+import Header from './components/header/header.jsx';
+
+import { setDarkmode,setDarkmodeOff } from './redux/darkmode/darkmode.actions';
+
+class App extends Component {
+
+
+
+  render() {
+
+    const {setDarkmode,setDarkmodeOff, darkmode} = this.props
+    return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Header  darkmode={darkmode} setDarkmode={setDarkmode} setDarkmodeOff={setDarkmodeOff} />
+      <Switch>
+      <Route exact path="/country/:name" component={Country} />
+      <Route exact path="/" component={Home} />
+      </Switch>
     </div>
   );
 }
+}
 
-export default App;
+const mapStateToProps = ({darkmode}) => ({
+  darkmode: darkmode.darkmode
+})
+
+const mapDispatchToProps = dispatch => ({
+  setDarkmode: () => dispatch(setDarkmode()),
+  setDarkmodeOff: () => dispatch(setDarkmodeOff())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

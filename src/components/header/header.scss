@@ -1,0 +1,41 @@
+@import '../../partials';
+
+header.normalmode {
+    border-bottom: 1px solid #00000021;       
+    @include normalmodeElements()
+}
+header.darkmode {
+     background: hsl(209, 23%, 22%);
+     color:#fff;
+     border-bottom: 1px solid #00000021;       
+ } 
+ 
+ header {
+     padding: 1.2em 5%;
+     position: fixed;
+     width:100%;
+     z-index: 9999;
+     display: block;
+     .navbar {
+         display: flex;
+         justify-content: space-between;
+         .heading {
+             font-weight: 800;
+         }
+         .switch {
+             button {
+                 background: transparent;
+                 outline: none;
+                 border: none;
+                 cursor: pointer;
+                 color: inherit;
+                 font-weight: 600;
+                 font-size: 14px;
+                 font-family: inherit;
+                 span {
+                     margin-right: 8px;
+                 }
+             }
+         }
+     }
+ }
