@@ -1,20 +1,18 @@
-import React, { Component } from 'react';
+import React, { PureComponent,Suspense } from 'react';
 import './grid-view.scss';
 import {connect} from 'react-redux';
+import GridElementSkeleton from '../grid-element/grid-element-skeleton';
+
+
+const GridElement = React.lazy(() => import('../grid-element/grid-element'));
 
 
 
-import GridElement from '../grid-element/grid-element';
-
-
-class GridView extends Component {
-    constructor(props) {
-        super();
-
-        this.state = {
+class GridView extends PureComponent {
+state = {
             showItems: 15
         }
-    }
+
 
 
 
@@ -44,7 +42,10 @@ class GridView extends Component {
 render() {
     const {countriesList, darkmode} = this.props;
     const countries = countriesList.slice(0, this.state.showItems).map(
-        (country) => <GridElement key={country.alpha3Code} country={country} darkmode={darkmode} />
+        (country) => (
+            <Suspense key={country.alpha3Code} fallback={<GridElementSkeleton  darkmode={darkmode} />}>
+            <GridElement key={country.alpha3Code} country={country} darkmode={darkmode} />
+            </Suspense>)
       )
     return(
         <div className="grid-view">

@@ -22,10 +22,12 @@ class App extends Component {
     return (
     <div className="App">
     <Header  darkmode={darkmode} setDarkmode={setDarkmode} setDarkmodeOff={setDarkmodeOff} />
+    <main>
       <Switch>
       <Route exact path="/country/:name" component={Country} />
       <Route exact path="/" component={Home} />
       </Switch>
+      </main>
     </div>
   );
 }

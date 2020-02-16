@@ -17,7 +17,8 @@ class Home extends PureComponent {
     state = {
         searchTerm: '',
         open:false,
-        selected:''
+        selected:'',
+        countriesList:[]
 
     }
 
@@ -25,7 +26,38 @@ class Home extends PureComponent {
 componentDidMount() {
         this.props.fetchCountries()
  }
+componentDidUpdate(prevProps,prevState) {
+    const { searchTerm, selected } = this.state
 
+    if(this.props.countries.length !== prevProps.countries.length) {
+        this.setState({countriesList:this.props.countries})
+    }
+
+    if(prevState.searchTerm.trim() !== this.state.searchTerm.trim() && prevState.selected !== this.state.selected) {
+        const res = this.filterCountries(searchTerm, this.props.countries)
+        this.setState({
+            countriesList:res
+        }) 
+    } else if(prevState.selected === this.state.selected && prevState.searchTerm.trim() !== this.state.searchTerm.trim()) {
+        const filteredCountries = this.filterCountriesByRegion(selected)
+        const res = this.filterCountries(searchTerm, filteredCountries)
+        this.setState({
+            countriesList:res
+        }) 
+    } else if(prevState.selected !== this.state.selected) {
+        const res = this.filterCountriesByRegion(selected)
+        this.setState({
+            countriesList:res
+        }) 
+    } else if(prevState.searchTerm !== this.state.searchTerm) {
+        const searchedCountries = this.filterCountries(this.state.searchTerm,this.props.countries);
+        this.setState({
+            countriesList:searchedCountries
+        })
+    }  else {
+        return;
+    }   
+}
 
     isOpen = () => {
         const {open} = this.state;
@@ -44,13 +76,12 @@ componentDidMount() {
     filterCountries = (searchTerm,countries) => {
         const filterdCountries = countries.filter(country => country.name.toLowerCase().startsWith(searchTerm.trim().toLowerCase()))
         return filterdCountries
-
     }
 
 
     displayOptions = () => {
         const regions = ["Africa","Americas","Asia","Europe", "Oceania"]
-        return regions.map((region,i) => (<div key={i}  onClick={()=>this.setState({selected:region,open:false})} className="option">{region}</div>))
+        return regions.map((region) => (<div key={`${region}`}  onClick={()=>this.setState({selected:region,open:false})} className="option">{region}</div>))
    }
 
    clearSelected = () => this.setState({selected:''})
@@ -87,7 +118,7 @@ componentDidMount() {
     render() {
         const {open, searchTerm, selected} = this.state;
         const { darkmode,isLoading,errors} = this.props
-        const countriesList = this.getCountryList()
+        const countriesList = this.state.countriesList
         if(isLoading || errors) {
             return(
                 <LoadingOrErrors isLoading={isLoading} errors={errors} darkmode={darkmode} />
